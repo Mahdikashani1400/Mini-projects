@@ -1,0 +1,20 @@
+.questions input[type="radio"] {
+  appearance: none;
+  color: currentColor;
+  @apply absolute w-full h-full rounded-xl  top-0 left-0 cursor-pointer;
+}
+
+.questions input[type="radio"]:checked + div.checked {
+  @apply bg-green-700;
+}
+.questions input[type="radio"]:checked + div.checked > svg {
+  display: block;
+}
+
+.questions .option {
+  @apply relative rounded-xl py-3 px-5 flex justify-between items-center border border-white/35;
+}
+
+.questions .check__container {
+  @apply relative flex items-center justify-center mt-[1px] border border-white/35 w-5 h-5 rounded-full;
+}
