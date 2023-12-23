@@ -12,7 +12,7 @@ export default class Timer extends Component {
   }
   updateValues(statement) {
     this.currentTime = new Date();
-    this.hours = statement === "start" ? this.currentTime.getHours() : 0;
+    this.hours = statement === "start" ? this.currentTime.getHours() + 1 : 0;
     this.minutes = statement === "start" ? this.currentTime.getMinutes() : 0;
     this.seconds = statement === "start" ? this.currentTime.getSeconds() : 0;
   }
@@ -47,7 +47,7 @@ export default class Timer extends Component {
   }
   render() {
     return (
-      <div>
+      <>
         <div className="container">
           <div className="grid grid-cols-3 gap-16 text-8xl text-purple-800 shadow-xl">
             <div className="bg-white flex justify-center items-center py-16 ">
@@ -77,7 +77,7 @@ export default class Timer extends Component {
             start
           </button>
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -18,3 +18,7 @@
 .questions .check__container {
   @apply relative flex items-center justify-center mt-[1px] border border-white/35 w-5 h-5 rounded-full;
 }
+
+.questions input.currentAnswer:checked {
+  @apply border;
+}

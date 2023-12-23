@@ -13,6 +13,13 @@ module.exports = {
       fontFamily: {
         "IRANSans": "IRANSans"
       },
+      backgroundImage: {
+        "flight": "url('/Ticket/flight.webp')"
+      },
+      width: {
+        '25': "100px",
+        '50': "200px",
+      }
     },
   },
   plugins: [

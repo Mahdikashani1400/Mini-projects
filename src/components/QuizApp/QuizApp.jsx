@@ -131,10 +131,10 @@ export default class QuizApp extends Component {
   }
   render() {
     return (
-      <div>
+      <>
         <div className="container">
-          <div className="bg-slate-900 w-[400px]  mx-auto rounded-2xl shadow-xl">
-            <div className="content py-10 px-8 text-left text-white">
+          <div className="bg-slate-900 md:w-[400px] w-full  mx-auto rounded-2xl shadow-xl">
+            <div className="content md:py-10 md:px-8 px-4 py-5 text-left text-white">
               <h1 className="text-xl font-semibold font-sans leading-tight tracking-wide mb-4">
                 {`Question ${this.state.currentQs}`}
                 <span className="text-lg text-gray-600 ">{`/${this.state.questions.length}`}</span>
@@ -213,9 +213,9 @@ export default class QuizApp extends Component {
                           <input
                             type="radio"
                             name="question"
-                            className={`checked:${
-                              this.state.userAnswer ? "border" : ""
-                            }`}
+                            className={
+                              this.state.userAnswer ? "currentAnswer" : ""
+                            }
                             id=""
                             value={opt}
                             onClick={this.selectOpt}
@@ -259,7 +259,7 @@ export default class QuizApp extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

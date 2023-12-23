@@ -87,10 +87,10 @@ export default class Products extends Component {
   }
   render() {
     return (
-      <div className="">
+      <>
         <div className="container">
           <div
-            className="grid grid-cols-4 gap-8 px-10"
+            className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2  gap-8 px-10"
             // onClick={() => this.clickHandler()}
           >
             {this.state.products.map((product, index) => (
@@ -102,7 +102,7 @@ export default class Products extends Component {
             <ProductBox></ProductBox> */}
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

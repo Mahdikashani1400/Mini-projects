@@ -1,4 +1,7 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   return (
@@ -46,25 +49,28 @@ export default function Login() {
               href="#"
               className="flex justify-center items-center bg-white py-2 rounded-[10px]"
             >
-              <svg className="w-7 h-7">
+              {/* <svg className="w-7 h-7">
                 <use href="#github"></use>
-              </svg>
+              </svg> */}
+              <FaGithub className="w-7 h-7"></FaGithub>
             </a>
             <a
               href="#"
               className="flex justify-center items-center bg-white py-2 rounded-[10px]"
             >
-              <svg className="w-7 h-7">
+              {/* <svg className="w-7 h-7">
                 <use href="#facebook"></use>
-              </svg>
+              </svg> */}
+              <FaFacebook className="w-7 h-7 text-sky-800"></FaFacebook>
             </a>
             <a
               href="#"
               className="flex justify-center items-center bg-white py-2 rounded-[10px]"
             >
-              <svg className="w-7 h-7">
+              {/* <svg className="w-7 h-7">
                 <use href="#google"></use>
-              </svg>
+              </svg> */}
+              <FcGoogle className="w-7 h-7"></FcGoogle>
             </a>
           </div>
         </div>
