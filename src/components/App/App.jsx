@@ -16,7 +16,28 @@ function App() {
   return (
     <>
       <Icons></Icons>
+      {/* <LoginForm {...formInfo}>
+        <div className="input__container">
+          <label htmlFor="email" className="">
+            Email
+          </label>
+          <input type="text" id="email" className="" placeholder="Email" />
+        </div>
+        <div className="input__container">
+          <label htmlFor="password" className="">
+            Password
+          </label>
+          <input
+            type="text"
+            id="password"
+            className=""
+            placeholder="Password"
+          />
+        </div>
+      </LoginForm> */}
 
+      {/* <Products></Products> */}
+      {/* <Timer></Timer> */}
       <QuizApp></QuizApp>
     </>
   );
