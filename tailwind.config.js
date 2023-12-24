@@ -11,12 +11,14 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "IRANSans": "IRANSans"
+        "IRANSans": "IRANSans",
+        "Inter": "Inter",
+        // "Inter-bold": "Inter-bold",
       },
       backgroundImage: {
         "flight": "url('/Ticket/flight.webp')"
       },
-      width: {
+      spacing: {
         '25': "100px",
         '50': "200px",
       }

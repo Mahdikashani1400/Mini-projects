@@ -8,6 +8,8 @@ import Products from "../Products/Products";
 import Timer from "../Timer/Timer";
 import QuizApp from "../QuizApp/QuizApp";
 import Ticket from "../Ticket/Ticket";
+import TodoList from "../TodoList/TodoList";
+
 function App() {
   const formInfo = { title: "Login" };
   // const formInfo = {};
@@ -17,7 +19,7 @@ function App() {
   return (
     <>
       <Icons></Icons>
-      <LoginForm {...formInfo}>
+      {/* <LoginForm {...formInfo}>
         <div className="input__container">
           <label htmlFor="email" className="">
             Email
@@ -35,12 +37,13 @@ function App() {
             placeholder="Password"
           />
         </div>
-      </LoginForm>
+      </LoginForm> */}
 
       {/* <Products></Products> */}
       {/* <Timer></Timer> */}
       {/* <QuizApp></QuizApp> */}
       {/* <Ticket></Ticket> */}
+      <TodoList></TodoList>
     </>
   );
 }

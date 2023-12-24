@@ -1,0 +1,16 @@
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  @apply absolute w-full h-full left-0 top-0   cursor-pointer;
+}
+.checkbox__container .bg_check {
+  content: "";
+  @apply absolute w-full h-full rounded-full  top-0 left-0;
+}
+input[type="checkbox"]:checked + div {
+  @apply border-violet-700 bg-violet-700;
+}
+input[type="checkbox"]:checked + div svg {
+  @apply inline-block;
+}
