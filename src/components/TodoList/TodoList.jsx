@@ -33,23 +33,43 @@ export default class TodoList extends Component {
         };
       });
   }
+  onclickTodoHandler(todoId) {
+    this.setState({
+      todoList: this.state.todoList.map((todo) => {
+        if (todo.id == todoId) {
+          todo.isDone ? (todo.isDone = false) : (todo.isDone = true);
+        }
+        return todo;
+      }),
+    });
+  }
+  deleteTodoHandler(todoId) {
+    this.newTodoValue = "d";
+
+    this.setState({
+      todoList: this.state.todoList.filter((todo) => {
+        return todo.id !== todoId;
+      }),
+    });
+  }
   render() {
     return (
       <>
         <div className="h-full w-full font-Inter">
           <TodoHeader></TodoHeader>
-          <div className="relative w-full flex justify-center pb-20 bg-neutral-900">
+          <div className="relative w-full flex justify-center h-lvh bg-neutral-900 md:px-8 px-4">
             <div className="flex flex-col items-center w-[762px]">
-              <div className="absolute flex items-center justify-center -top-[26px] gap-x-4">
+              <div className="absolute flex flex-col sm:flex-row items-center justify-center -top-[26px]  gap-4">
                 <TodoInput
                   onChange={this.onChangeInputHandler.bind(this)}
                   value={this.newTodoValue}
+                  submitCounter={this.state.todoList.length}
                 ></TodoInput>
                 <TodoCreateBtn
                   onCreate={this.createTodoHandler.bind(this)}
                 ></TodoCreateBtn>
               </div>
-              <div className="mt-24 mb-6 flex justify-between w-full">
+              <div className="mt-24 pt-10 sm:pt-0 mb-6 flex justify-between w-full">
                 <a href="#">
                   <span className="text-sky-400">count of Task</span>
                   <span className="py-0.5 px-2 text-xs inline-block ml-3 rounded-2xl bg-stone-700 text-white">
@@ -65,7 +85,12 @@ export default class TodoList extends Component {
               </div>
               <div className="flex flex-col gap-3 w-full text-left">
                 {this.state.todoList.map((todo) => (
-                  <TodoTask key={todo.id} {...todo}></TodoTask>
+                  <TodoTask
+                    key={todo.id}
+                    {...todo}
+                    onclick={this.onclickTodoHandler.bind(this)}
+                    delClick={this.deleteTodoHandler.bind(this)}
+                  ></TodoTask>
                 ))}
               </div>
             </div>

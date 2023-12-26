@@ -2,7 +2,7 @@ input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
 
-  @apply absolute w-full h-full left-0 top-0   cursor-pointer;
+  @apply absolute w-[92%] h-full left-0 top-0   cursor-pointer;
 }
 .checkbox__container .bg_check {
   content: "";
