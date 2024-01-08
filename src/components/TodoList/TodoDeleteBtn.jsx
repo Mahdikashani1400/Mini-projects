@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component,PureComponent } from "react";
 import { BsTrash } from "react-icons/bs";
 
-export default class TodoDeleteBtn extends Component {
+export default class TodoDeleteBtn extends PureComponent {
   constructor(props) {
     super(props);
   }

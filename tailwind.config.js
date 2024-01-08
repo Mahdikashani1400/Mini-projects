@@ -16,12 +16,18 @@ module.exports = {
         // "Inter-bold": "Inter-bold",
       },
       backgroundImage: {
-        "flight": "url('/Ticket/flight.webp')"
+        "flight": "url('/Ticket/flight.webp')",
+        "blue_radial": `radial-gradient(
+          103.88% 58.43% at 56.74% 50%,
+          #0085ff 0%,
+          #003465 100%
+        )`
       },
       spacing: {
         '25': "100px",
         '50': "200px",
-      }
+      },
+
     },
   },
   plugins: [

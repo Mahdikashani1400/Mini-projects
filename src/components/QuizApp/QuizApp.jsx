@@ -131,7 +131,7 @@ export default class QuizApp extends Component {
   }
   render() {
     return (
-      <>
+      <div className="component__container bg-blue_radial">
         <div className="container">
           <div className="bg-slate-900 md:w-[400px] w-full  mx-auto rounded-2xl shadow-xl">
             <div className="content md:py-10 md:px-8 px-4 py-5 text-left text-white">
@@ -259,7 +259,7 @@ export default class QuizApp extends Component {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

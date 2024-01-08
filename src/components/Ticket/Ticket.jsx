@@ -33,7 +33,7 @@ export default class Ticket extends Component {
 
   render() {
     return (
-      <>
+      <div className="component__container bg-blue_radial">
         <div className="container">
           <div className="lg:w-[800px] w-full mx-auto rounded-xl relative h-80 bg-white/20 shadow-xl grid lg:grid-cols-3 grid-cols-1 font-mono">
             <div className=" bg-flight w-full h-full bg-no-repeat bg-contain rounded-l-xl hidden md:block"></div>
@@ -54,14 +54,9 @@ export default class Ticket extends Component {
                   }}
                 >
                   <option value="">Please Select ...</option>
-                  {Object.keys(this.state.contriesInfo).map(
-                    (country) =>
-                      (country === this.state.mainCountry && (
-                        <option selected value={country}>
-                          {country}
-                        </option>
-                      )) || <option value={country}>{country}</option>
-                  )}
+                  {Object.keys(this.state.contriesInfo).map((country) => (
+                    <option value={country}>{country}</option>
+                  ))}
                 </select>
               </div>
               <div className="flex flex-col  ">
@@ -78,14 +73,14 @@ export default class Ticket extends Component {
                 >
                   {(this.state.mainCountry &&
                     this.state.contriesInfo[this.state.mainCountry].map(
-                      (city) => <option>{city}</option>
+                      (city) => <option selected>{city}</option>
                     )) || <option>no city</option>}
                 </select>
               </div>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

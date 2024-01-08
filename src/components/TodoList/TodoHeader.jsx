@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 
-export default class TodoHeader extends Component {
+export default class TodoHeader extends PureComponent {
   render() {
     return (
       <>

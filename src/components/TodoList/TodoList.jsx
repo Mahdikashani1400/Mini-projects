@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import TodoCeckbox from "./TodoCeckbox";
 import TodoHeader from "./TodoHeader";
 import TodoCreateBtn from "./TodoCreateBtn";
@@ -6,26 +6,44 @@ import TodoDeleteBtn from "./TodoDeleteBtn";
 import TodoInput from "./TodoInput";
 import TodoTask from "./TodoTask";
 import "./todolist.css";
-export default class TodoList extends Component {
+export default class TodoList extends PureComponent {
   constructor(props) {
+    // console.log("TodoList => constructor :1");
+
     super(props);
     this.state = {
       todoList: [],
     };
     this.newTodoValue = "";
   }
-
+  componentDidMount() {
+    // console.log("TodoList => componentDidMount :8");
+  }
+  static getDerivedStateFromProps(props, state) {
+    // console.log("TodoList => getDerivedStateFromProps :2");
+    return null;
+  }
+  getSnapshotBeforeUpdate(props, state) {
+    console.log("getSnapshotBeforeUpdate");
+    return "fake data";
+  }
+  componentDidUpdate(props, state, data) {
+    console.log(data, "componentDidUpdate");
+  }
   onChangeInputHandler(todoValue) {
     this.newTodoValue = todoValue;
   }
   createTodoHandler() {
     this.newTodoValue.trim() &&
+      this.newTodoValue !== "_-." &&
       this.setState((prevState) => {
         return {
           todoList: [
             ...prevState.todoList,
             {
-              id: prevState.todoList.length + 1,
+              id: prevState.todoList.length
+                ? prevState.todoList[prevState.todoList.length - 1]?.id + 1
+                : 1,
               todoText: this.newTodoValue.trim(),
               isDone: false,
             },
@@ -44,7 +62,7 @@ export default class TodoList extends Component {
     });
   }
   deleteTodoHandler(todoId) {
-    this.newTodoValue = "d";
+    this.newTodoValue = "_-.";
 
     this.setState({
       todoList: this.state.todoList.filter((todo) => {
@@ -53,11 +71,14 @@ export default class TodoList extends Component {
     });
   }
   render() {
+    // console.log("TodoList => render :3");
+    this.newTodoValue = "";
+
     return (
       <>
         <div className="h-full w-full font-Inter">
           <TodoHeader></TodoHeader>
-          <div className="relative w-full flex justify-center h-lvh bg-neutral-900 md:px-8 px-4">
+          <div className="relative w-full flex justify-center min-h-lvh bg-neutral-900 md:px-8 px-4">
             <div className="flex flex-col items-center w-[762px]">
               <div className="absolute flex flex-col sm:flex-row items-center justify-center -top-[26px]  gap-4">
                 <TodoInput

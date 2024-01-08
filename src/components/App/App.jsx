@@ -9,7 +9,7 @@ import Timer from "../Timer/Timer";
 import QuizApp from "../QuizApp/QuizApp";
 import Ticket from "../Ticket/Ticket";
 import TodoList from "../TodoList/TodoList";
-
+import Weather from "../Weather/Weather";
 function App() {
   const formInfo = { title: "Login" };
   // const formInfo = {};
@@ -43,7 +43,8 @@ function App() {
       {/* <Timer></Timer> */}
       {/* <QuizApp></QuizApp> */}
       {/* <Ticket></Ticket> */}
-      <TodoList></TodoList>
+      {/* <TodoList></TodoList> */}
+      <Weather></Weather>
     </>
   );
 }

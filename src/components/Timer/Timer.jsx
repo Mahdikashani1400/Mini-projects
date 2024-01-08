@@ -47,9 +47,9 @@ export default class Timer extends Component {
   }
   render() {
     return (
-      <>
+      <div className="component__container bg-blue_radial">
         <div className="container">
-          <div className="grid grid-cols-3 gap-16 text-8xl text-purple-800 shadow-xl">
+          <div className="grid md:grid-cols-3 gap-16 text-8xl text-purple-800 shadow-xl">
             <div className="bg-white flex justify-center items-center py-16 ">
               <span className="">
                 {this.hours !== undefined ? this.zeroHandler(this.hours) : "00"}
@@ -77,7 +77,7 @@ export default class Timer extends Component {
             start
           </button>
         </div>
-      </>
+      </div>
     );
   }
 }

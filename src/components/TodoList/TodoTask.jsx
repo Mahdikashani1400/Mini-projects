@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import TodoCeckbox from "./TodoCeckbox";
 import TodoDeleteBtn from "./TodoDeleteBtn";
 
@@ -7,12 +7,28 @@ export default class TodoTask extends Component {
     super(props);
   }
   onclickTodo() {
-    console.log(this.props.onclick);
-    this.props.onclick(this.props.id);
+    // console.log(this.props.onclick);
+    // this.props.onclick(this.props.id);
   }
   clickToDel() {
     this.props.delClick(this.props.id);
   }
+  shouldComponentUpdate(props, state) {
+    if (this.props.todoText === props.todoText) {
+      return false;
+    }
+    return true;
+  }
+  getSnapshotBeforeUpdate(props, state) {
+    return 19;
+  }
+  componentDidUpdate(props, state, data) {
+    // console.log(data);
+  }
+  componentWillUnmount() {
+    console.log("bye");
+  }
+
   render() {
     return (
       <>

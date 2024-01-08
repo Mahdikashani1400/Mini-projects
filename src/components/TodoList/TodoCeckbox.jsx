@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import { FaCheck } from "react-icons/fa6";
 
-export default class TodoCeckbox extends Component {
+export default class TodoCeckbox extends PureComponent {
   constructor(props) {
     super(props);
   }

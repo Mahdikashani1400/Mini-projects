@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 
-export default class TodoCreateBtn extends Component {
+export default class TodoCreateBtn extends PureComponent {
   constructor(props) {
     super(props);
   }
