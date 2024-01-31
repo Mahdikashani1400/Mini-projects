@@ -73,7 +73,7 @@ export default class Ticket extends Component {
                 >
                   {(this.state.mainCountry &&
                     this.state.contriesInfo[this.state.mainCountry].map(
-                      (city) => <option selected>{city}</option>
+                      (city) => <option>{city}</option>
                     )) || <option>no city</option>}
                 </select>
               </div>

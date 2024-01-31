@@ -43,8 +43,8 @@ function App() {
       {/* <Timer></Timer> */}
       {/* <QuizApp></QuizApp> */}
       {/* <Ticket></Ticket> */}
-      {/* <TodoList></TodoList> */}
-      <Weather></Weather>
+      <TodoList></TodoList>
+      {/* <Weather></Weather> */}
     </>
   );
 }

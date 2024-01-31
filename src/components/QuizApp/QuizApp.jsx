@@ -196,13 +196,13 @@ export default class QuizApp extends Component {
                           <input
                             type="radio"
                             name="question"
-                            className={` ${
+                            className={`${
                               this.state.userAnswer === opt
                                 ? (this.state.questions[
                                     this.state.currentQs - 1
                                   ].isAnswer &&
-                                    "border-green-600 border-2") ||
-                                  "border-red-600 border-2"
+                                    "successAnswer") ||
+                                  "wrongAnswer"
                                 : ""
                             }`}
                             id=""

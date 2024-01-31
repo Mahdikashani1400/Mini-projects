@@ -36,6 +36,6 @@ module.exports = {
       addVariant('child', "& > *")
       addVariant('child-hover', "& > *:hover")
     },
-    require('flowbite/plugin')
+    // require('flowbite/plugin')
   ],
 }

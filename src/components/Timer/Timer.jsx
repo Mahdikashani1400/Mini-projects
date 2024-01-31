@@ -12,7 +12,7 @@ export default class Timer extends Component {
   }
   updateValues(statement) {
     this.currentTime = new Date();
-    this.hours = statement === "start" ? this.currentTime.getHours() + 1 : 0;
+    this.hours = statement === "start" ? this.currentTime.getHours() : 0;
     this.minutes = statement === "start" ? this.currentTime.getMinutes() : 0;
     this.seconds = statement === "start" ? this.currentTime.getSeconds() : 0;
   }

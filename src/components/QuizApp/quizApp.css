@@ -1,9 +1,18 @@
 .questions input[type="radio"] {
   appearance: none;
   color: currentColor;
-  @apply absolute w-full h-full rounded-xl  top-0 left-0 cursor-pointer;
+  @apply absolute w-full h-full rounded-xl  top-0 left-0 cursor-pointer bg-inherit;
 }
+input[type="radio"]:focus {
+  box-shadow: none !important;
 
+  @apply ring-0 shadow-none;
+}
+input[type="radio"]:checked {
+  background: inherit !important;
+  box-shadow: none !important;
+  @apply ring-0 shadow-none;
+}
 .questions input[type="radio"]:checked + div.checked {
   @apply bg-green-700;
 }
@@ -20,5 +29,11 @@
 }
 
 .questions input.currentAnswer:checked {
-  @apply border;
+  @apply border-2 border-white;
+}
+.questions input.successAnswer {
+  @apply border-2 border-green-600;
+}
+.questions input.wrongAnswer {
+  @apply border-2 border-red-600;
 }
