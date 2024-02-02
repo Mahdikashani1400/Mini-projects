@@ -31,6 +31,11 @@ export default class Weather extends Component {
         this.setState({
           mainInfo: data,
         });
+      })
+      .catch((err) => {
+        this.setState({
+          mainInfo: "error",
+        });
       });
   }
   getSnapshotBeforeUpdate(props, state) {
@@ -45,6 +50,11 @@ export default class Weather extends Component {
         .then((data) => {
           this.setState({
             mainInfo: data,
+          });
+        })
+        .catch((err) => {
+          this.setState({
+            mainInfo: "error",
           });
         });
   }
@@ -166,6 +176,14 @@ export default class Weather extends Component {
                   </div>
                 </div>
               </>
+            ) : this.state.mainInfo === "error" ? (
+              <div className="w-full bg-red-500/85 text-white rounded-lg lg:py-16 md:py-8 py-6 z-20 lg:text-3xl md:text-2xl text-base font-semibold relative">
+                your connection has a problem !
+              </div>
+            ) : this.state.mainInfo === null ? (
+              <div className="w-full bg-yellow-500/85 text-white rounded-lg lg:py-16 md:py-8 py-6 z-20 lg:text-3xl md:text-2xl text-base font-semibold relative">
+                Please wait ...
+              </div>
             ) : (
               <div className="w-full bg-red-500/85 text-white rounded-lg lg:py-16 md:py-8 py-6 z-20 lg:text-3xl md:text-2xl text-base font-semibold relative">
                 this city is not available !

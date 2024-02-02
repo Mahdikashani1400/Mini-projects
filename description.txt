@@ -66,3 +66,5 @@ getSnapshotBeforeUpdate(props, state)
 
 componentDidUpdate(props, state, data)
 برای تابع بالا  هم دقیقا استیت ها قبل از اپدیت هستن.
+
+
