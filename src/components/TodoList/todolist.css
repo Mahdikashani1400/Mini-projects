@@ -14,3 +14,6 @@ input[type="checkbox"]:checked + div {
 input[type="checkbox"]:checked + div svg {
   @apply inline-block;
 }
+input[type="checkbox"]:checked + div + p {
+  @apply line-through text-gray-500/90;
+}

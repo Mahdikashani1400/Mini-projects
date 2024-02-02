@@ -14,9 +14,11 @@ export default function TodoList(props) {
   const [todoList, setTodoList] = useState([]);
   const [removeState, setRemoveState] = useState("N");
   let newTodoValue = "";
+  let countDone = 0;
 
   function onChangeInputHandler(todoValue) {
     newTodoValue = todoValue;
+    todoValue.length !== 0 && setRemoveState("N");
   }
   function createTodoHandler() {
     newTodoValue.trim() &&
@@ -53,6 +55,13 @@ export default function TodoList(props) {
     });
     setRemoveState("Y");
   }
+
+  function sumOfTaskDone(todoList) {
+    todoList.forEach((todo) => {
+      todo.isDone && ++countDone;
+    });
+    return countDone;
+  }
   // newTodoValue = "";
   return (
     <>
@@ -75,25 +84,27 @@ export default function TodoList(props) {
               <a href="#">
                 <span className="text-sky-400">count of Task</span>
                 <span className="py-0.5 px-2 text-xs inline-block ml-3 rounded-2xl bg-stone-700 text-white">
-                  5
+                  {todoList.length}
                 </span>
               </a>
               <a href="#">
                 <span className="text-purple-500">Task Done!</span>
                 <span className="py-0.5 px-2 text-xs inline-block ml-3 rounded-2xl bg-stone-700 text-white">
-                  5
+                  {sumOfTaskDone(todoList)}
                 </span>
               </a>
             </div>
             <div className="flex flex-col gap-3 w-full text-left">
-              {todoList.map((todo) => (
-                <TodoTask
-                  key={todo.id}
-                  {...todo}
-                  onclick={onclickTodoHandler.bind(this)}
-                  delClick={deleteTodoHandler.bind(this)}
-                ></TodoTask>
-              ))}
+              {todoList.map((todo) => {
+                return (
+                  <TodoTask
+                    key={todo.id}
+                    {...todo}
+                    onclick={onclickTodoHandler.bind(this)}
+                    delClick={deleteTodoHandler.bind(this)}
+                  ></TodoTask>
+                );
+              })}
             </div>
           </div>
         </div>

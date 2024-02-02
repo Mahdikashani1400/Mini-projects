@@ -1,7 +1,6 @@
 import React, { Component, PureComponent } from "react";
 
-export default class TodoHeader extends PureComponent {
-  render() {
+export default function TodoHeader(props) {
     return (
       <>
         <div className="bg-black h-50 flex justify-center items-center gap-x-4">
@@ -14,5 +13,4 @@ export default class TodoHeader extends PureComponent {
         </div>
       </>
     );
-  }
 }
