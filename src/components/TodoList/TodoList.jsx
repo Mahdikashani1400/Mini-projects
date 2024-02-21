@@ -1,5 +1,5 @@
 // import React, { Component, PureComponent } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoCeckbox from "./TodoCeckbox";
 import TodoHeader from "./TodoHeader";
 import TodoCreateBtn from "./TodoCreateBtn";
@@ -7,6 +7,7 @@ import TodoDeleteBtn from "./TodoDeleteBtn";
 import TodoInput from "./TodoInput";
 import TodoTask from "./TodoTask";
 import "./todolist.css";
+import UseDoneTodo from "../../hooks/UseDoneTodo";
 
 // functional component
 
@@ -32,20 +33,25 @@ export default function TodoList(props) {
           },
         ];
       });
+    console.log(todoList);
     setRemoveState("N");
   }
-  function onclickTodoHandler(todoId) {
-    setTodoList((prevState) => {
-      let newTodoList = prevState.map((todo) => {
-        if (todo.id == todoId) {
-          todo.isDone ? (todo.isDone = false) : (todo.isDone = true);
-        }
-        return todo;
-      });
-      return newTodoList;
-    });
-    setRemoveState("N");
-  }
+  const doneTodoHandler = (todoId) => {
+    UseDoneTodo(todoId, setTodoList);
+  };
+  // function onclickTodoHandler(todoId) {
+  //   console.log(todoId);
+  //   setTodoList((prevState) => {
+  //     let newTodoList = prevState.map((todo) => {
+  //       if (todo.id == todoId) {
+  //         todo.isDone ? (todo.isDone = false) : (todo.isDone = true);
+  //       }
+  //       return todo;
+  //     });
+  //     return newTodoList;
+  //   });
+  //   setRemoveState("N");
+  // }
   function deleteTodoHandler(todoId) {
     setTodoList((prevState) => {
       let newTodoList = prevState.filter((todo) => {
@@ -62,9 +68,21 @@ export default function TodoList(props) {
     });
     return countDone;
   }
-  // newTodoValue = "";
+  useEffect(() => {
+    console.log("mount => TodoList");
+    return () => {
+      console.log("unmount => TodoList");
+    };
+  }, []);
+  useEffect(() => {
+    console.log("update => TodoList");
+    console.log(todoList);
+  }, [todoList]);
   return (
     <>
+      {console.log("render => TodoList")}
+      {/* {console.log(todoList)} */}
+
       <div className="h-full w-full font-Inter">
         <TodoHeader></TodoHeader>
         <div className="relative w-full flex justify-center min-h-lvh bg-neutral-900 md:px-8 px-4">
@@ -100,9 +118,10 @@ export default function TodoList(props) {
                   <TodoTask
                     key={todo.id}
                     {...todo}
-                    onclick={onclickTodoHandler.bind(this)}
+                    // onclick={onclickTodoHandler}
+                    onclick={doneTodoHandler}
                     delClick={deleteTodoHandler.bind(this)}
-                  ></TodoTask>
+                  />
                 );
               })}
             </div>

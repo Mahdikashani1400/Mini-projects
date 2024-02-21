@@ -1,39 +1,13 @@
 import React, { Component } from "react";
 import ProductBox from "./ProductBox";
+import ProductData from "./ProductData";
+import HeaderProducts from "../Header/Header";
+
 export default class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [
-        {
-          name: "کفش طبی زیبا",
-          size: 39,
-          price: 770,
-          count: 99,
-          img: "shoe",
-        },
-        {
-          name: "کفش ورزشی زیبا",
-          size: 0,
-          price: 230,
-          count: 56,
-          img: "shoe-2",
-        },
-        {
-          name: "کفش کودک زیبا",
-          size: "Xl",
-          price: 340,
-          count: 56,
-          img: "shoe-3",
-        },
-        {
-          name: "کفش پاشنه بلند زیبا",
-          size: 0,
-          price: 230,
-          count: 56,
-          img: "shoe-2",
-        },
-      ],
+      products: ProductData,
       users: [
         {
           name: "ali",
@@ -87,10 +61,10 @@ export default class Products extends Component {
   }
   render() {
     return (
-      <div className="component__container bg-blue_radial">
+      <div className="component__container bg-blue_radial pt-0 justify-start ">
         <div className="container">
           <div
-            className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2  gap-8 px-10"
+            className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2  gap-8 px-10 mt-32"
             // onClick={() => this.clickHandler()}
           >
             {this.state.products.map((product, index) => (

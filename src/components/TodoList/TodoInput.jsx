@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from "react";
+import UseTodoInput from "../../hooks/UseTodoInput";
 // import React, { Component, PureComponent } from "react";
 
 export default function TodoInput(props) {
-  let [inputValue, setInputValue] = useState("");
-  const [subCounter, setSubCounter] = useState(0);
-  let [delCounter, setDelCounter] = useState(0);
-  function onChangeHandler(e) {
-    // console.log(e.nativeEvent.target.value);
+  // let [inputValue, setInputValue] = useState("");
+  // const [subCounter, setSubCounter] = useState(0);
+  // let [delCounter, setDelCounter] = useState(0);
+  // function onChangeHandler(e) {
+  //   // console.log(e.nativeEvent.target.value);
 
-    setInputValue(e.nativeEvent.target.value);
-    setSubCounter(props.submitCounter);
-    setDelCounter(props.removeState === "Y" ? delCounter + 1 : 0);
-    props.onChange(e.nativeEvent.target.value);
-  }
-  useEffect(() => {
-    // console.log("mount");
-  }, []);
-  useEffect(() => {
-    // console.log("update");
-  });
+  //   setInputValue(e.nativeEvent.target.value);
+  //   setSubCounter(props.submitCounter);
+  //   setDelCounter(props.removeState === "Y" ? delCounter + 1 : 0);
+  //   props.onChange(e.nativeEvent.target.value);
+  // }
 
-  inputValue =
-    subCounter !== props.submitCounter ||
-    (props.removeState === "Y" && !delCounter)
-      ? ""
-      : inputValue;
+  // inputValue =
+  //   subCounter !== props.submitCounter ||
+  //   (props.removeState === "Y" && !delCounter)
+  //     ? ""
+  //     : inputValue;
 
+  const inputProps = UseTodoInput(props);
   return (
     <>
       <input
         type="text"
         className="p-4 flex items-center gap-2 flex-1 rounded-lg border border-black/90 bg-neutral-800 md:w-[638px] sm:w-[500px]  w-[320px] text-base font-normal leading-5 text-gray-100 focus-visible:border-blue-800/85 focus-visible:outline-none"
         placeholder="todo..."
-        value={inputValue}
-        onChange={onChangeHandler.bind(this)}
+        {...inputProps}
+        // value={inputValue}
+        // onChange={onChangeHandler.bind(this)}
       />
       {/* {(props.removeState === "Y" && (
         <input

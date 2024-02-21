@@ -35,7 +35,7 @@ export default function Login() {
           </div>
         </div>
         <button className="bg-blue-950 py-3 mb-8 w-full rounded-[10px] text-white transition-all hover:bg-blue-950/85">
-          Sign in
+          Login
         </button>
 
         <div className="">

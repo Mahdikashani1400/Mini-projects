@@ -12,7 +12,7 @@ export default function LoginForm({ title, children }) {
   };
 
   return (
-    <div className="container">
+    <div className="component__container bg-blue_radial">
       <div className="w-full h-full flex items-center justify-center text-left py-10">
         <div className="login__form-container">{formState()}</div>
       </div>
