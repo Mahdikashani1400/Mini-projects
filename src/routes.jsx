@@ -14,6 +14,8 @@ import GooglePlay from "./components/About/GooglePlay";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Panel from "./components/Panel/Panel";
 import PrivateRoute from "./components/PrivateRoute";
+import TimerRef from "./components/TimerRef/TimerRef";
+import TodoTable from "./components/TodoTable/TodoTable";
 
 const formInfo = { title: "Login" };
 
@@ -21,12 +23,13 @@ let routes = [
   { path: "/", element: <Home /> },
   { path: "/TodoList", element: <TodoList /> },
   { path: "/LoginForm", element: <LoginForm {...formInfo} /> },
-  { path: "/Products", element: <Products /> },
-  { path: "/Timer", element: <Timer /> },
+  { path: "/Products", element: <Products /> }, // #
+  { path: "/Timer", element: <TimerRef /> },
   { path: "/QuizApp", element: <QuizApp /> },
   { path: "/Ticket", element: <Ticket /> },
   { path: "/Weather", element: <Weather /> },
-  { path: "/ProductPage/:productId", element: <ProductPage /> },
+  { path: "/ProductPage/:productId", element: <ProductPage /> }, // #
+  { path: "/TodoTable/:todoId", element: <TodoTable /> },
   { path: "*", element: <NotFound /> },
   {
     path: "/about/*",

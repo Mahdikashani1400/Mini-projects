@@ -19,17 +19,23 @@ export default function TodoTask(props) {
   useEffect(() => {
     console.log("update => TodoTask");
   });
+
   return (
     <>
       {console.log("render => TodoTask")}
 
       <div className="flex justify-between items-center bg-neutral-800 text-sm leading-5 font-normal text-gray-200 p-4 rounded-lg  border border-gray-700 shadow-lg gap-x-3 relative mx-2">
-        <TodoCeckbox className="z-10" onclick={onclickTodo}></TodoCeckbox>
+        <TodoCeckbox
+          className="z-10"
+          onclick={onclickTodo}
+          isDone={props.isDone}
+        ></TodoCeckbox>
         <p className="text-left w-fit text-white ml-2">{props.todoText}</p>
         <TodoDeleteBtn onclick={clickToDel}></TodoDeleteBtn>
       </div>
     </>
   );
+  // );
 }
 
 // class component

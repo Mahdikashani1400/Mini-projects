@@ -21,6 +21,6 @@ export default function UseTodoInput(props) {
       : inputValue;
   return {
     value: inputValue,
-    onChange: onChangeHandler.bind(this),
+    onChange: onChangeHandler,
   };
 }

@@ -43,6 +43,10 @@ export default function Timer(props) {
   function zeroHandler(num) {
     return String(num).length === 1 ? "0" + num : num;
   }
+  {
+    console.log("x");
+  }
+
   return (
     <div className="component__container bg-blue_radial">
       <div className="container">

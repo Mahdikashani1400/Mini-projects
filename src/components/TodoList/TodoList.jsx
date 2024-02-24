@@ -1,5 +1,5 @@
 // import React, { Component, PureComponent } from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, memo } from "react";
 import TodoCeckbox from "./TodoCeckbox";
 import TodoHeader from "./TodoHeader";
 import TodoCreateBtn from "./TodoCreateBtn";
@@ -8,11 +8,13 @@ import TodoInput from "./TodoInput";
 import TodoTask from "./TodoTask";
 import "./todolist.css";
 import UseDoneTodo from "../../hooks/UseDoneTodo";
+import UseLocalStorage from "../../hooks/UseLocalStorage";
 
 // functional component
 
 export default function TodoList(props) {
-  const [todoList, setTodoList] = useState([]);
+  // const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = UseLocalStorage("listItem");
   const [removeState, setRemoveState] = useState("N");
   let newTodoValue = "";
   let countDone = 0;
@@ -27,31 +29,21 @@ export default function TodoList(props) {
         return [
           ...prevState,
           {
-            id: prevState.length ? prevState[prevState.length - 1]?.id + 1 : 1,
+            id:
+              prevState.length - 1
+                ? prevState[prevState.length - 1]?.id + 1
+                : 1,
             todoText: newTodoValue.trim(),
             isDone: false,
           },
         ];
       });
-    console.log(todoList);
     setRemoveState("N");
   }
   const doneTodoHandler = (todoId) => {
     UseDoneTodo(todoId, setTodoList);
   };
-  // function onclickTodoHandler(todoId) {
-  //   console.log(todoId);
-  //   setTodoList((prevState) => {
-  //     let newTodoList = prevState.map((todo) => {
-  //       if (todo.id == todoId) {
-  //         todo.isDone ? (todo.isDone = false) : (todo.isDone = true);
-  //       }
-  //       return todo;
-  //     });
-  //     return newTodoList;
-  //   });
-  //   setRemoveState("N");
-  // }
+
   function deleteTodoHandler(todoId) {
     setTodoList((prevState) => {
       let newTodoList = prevState.filter((todo) => {
@@ -61,13 +53,18 @@ export default function TodoList(props) {
     });
     setRemoveState("Y");
   }
-
-  function sumOfTaskDone(todoList) {
+  const sumOfTaskDone = useMemo(() => {
     todoList.forEach((todo) => {
       todo.isDone && ++countDone;
     });
     return countDone;
-  }
+  }, [todoList]);
+  // function sumOfTaskDone(todoList) {
+  //   todoList.forEach((todo) => {
+  //     todo.isDone && ++countDone;
+  //   });
+  //   return countDone;
+  // }
   useEffect(() => {
     console.log("mount => TodoList");
     return () => {
@@ -76,7 +73,6 @@ export default function TodoList(props) {
   }, []);
   useEffect(() => {
     console.log("update => TodoList");
-    console.log(todoList);
   }, [todoList]);
   return (
     <>
@@ -85,13 +81,13 @@ export default function TodoList(props) {
 
       <div className="h-full w-full font-Inter">
         <TodoHeader></TodoHeader>
-        <div className="relative w-full flex justify-center min-h-lvh bg-neutral-900 md:px-8 px-4">
+        <div className="relative w-full flex justify-center min-h-lvh bg-neutral-900 md:px-8 px-4 pb-8">
           <div className="flex flex-col items-center w-[762px]">
             <div className="absolute flex flex-col sm:flex-row items-center justify-center -top-[26px]  gap-4">
               <TodoInput
                 onChange={onChangeInputHandler.bind(this)}
                 value={newTodoValue}
-                submitCounter={todoList.length}
+                submitCounter={todoList.length - 1}
                 removeState={removeState}
               ></TodoInput>
               <TodoCreateBtn
@@ -102,27 +98,31 @@ export default function TodoList(props) {
               <a href="#">
                 <span className="text-sky-400">count of Task</span>
                 <span className="py-0.5 px-2 text-xs inline-block ml-3 rounded-2xl bg-stone-700 text-white">
-                  {todoList.length}
+                  {todoList.length - 1}
                 </span>
               </a>
               <a href="#">
                 <span className="text-purple-500">Task Done!</span>
                 <span className="py-0.5 px-2 text-xs inline-block ml-3 rounded-2xl bg-stone-700 text-white">
-                  {sumOfTaskDone(todoList)}
+                  {sumOfTaskDone}
                 </span>
               </a>
             </div>
             <div className="flex flex-col gap-3 w-full text-left">
               {todoList.map((todo) => {
-                return (
-                  <TodoTask
-                    key={todo.id}
-                    {...todo}
-                    // onclick={onclickTodoHandler}
-                    onclick={doneTodoHandler}
-                    delClick={deleteTodoHandler.bind(this)}
-                  />
-                );
+                if (todo.id) {
+                  // memo(() =>
+                  return (
+                    <TodoTask
+                      key={todo.id}
+                      {...todo}
+                      // onclick={onclickTodoHandler}
+                      onclick={doneTodoHandler}
+                      delClick={deleteTodoHandler.bind(this)}
+                    />
+                  );
+                  // );
+                }
               })}
             </div>
           </div>

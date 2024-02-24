@@ -8,6 +8,9 @@ import Header from "../Header/Header";
 import routes from "../../routes";
 import { useRoutes } from "react-router-dom";
 import Counter from "../../learn-ex/Counter";
+import CounterMemo from "../../learn-ex/CounterMemo";
+import { PostComponentWithData } from "../../learn-ex/HOC";
+import TitleUseRef from "../../learn-ex/TitleUseRef";
 
 function App() {
   let router = useRoutes(routes);
@@ -15,12 +18,15 @@ function App() {
     <>
       <Icons></Icons>
       <Header />
-      <Counter />
       {router}
+      {/* <TitleUseRef /> */}
+
+      {/* <Counter /> */}
+      {/* <CounterMemo /> */}
+      {/* <PostComponentWithData /> */}
     </>
   );
 }
-
 // روت بندی غیر استاندارد
 
 // {/* <Routes>
