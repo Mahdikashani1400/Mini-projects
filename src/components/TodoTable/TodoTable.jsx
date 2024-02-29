@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, Navigate, useParams } from "react-router-dom";
 
 export default function TodoTable() {
-  const pageNumber = useParams().todoId;
+  const pageNumber = useRef(useParams().todoId);
   const userDatas = useRef([]);
   const isUserDatas = useRef(true);
   const [userDataInpages, setUserDataInpages] = useState([]);
@@ -10,34 +10,33 @@ export default function TodoTable() {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then((res) => res.json())
       .then((data) => {
-        isUserDatas.current = data.length / 10 >= pageNumber;
+        isUserDatas.current = data.length / 20 >= pageNumber.current;
         userDatas.current = data;
-        setUserDataInpages(data.slice((pageNumber - 1) * 10, pageNumber * 10));
+        setUserDataInpages(
+          data.slice((pageNumber.current - 1) * 20, pageNumber.current * 20)
+        );
       });
   }, []);
-  // useEffect(() => {
-  //   if (userDatas.current.length) {
-  //     isUserDatas.current = userDatas.current.length / 10 >= pageNumber;
-  //     console.log(userDatas.current.length / 10, pageNumber);
-  //   }
-  // });
+  useEffect(() => {
+    // pageNumber.current = useParams().todoId;
+  });
   return (
     <div className="component__container bg-blue_radial">
       <div className="container">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 relative min-h-32">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 relative min-h-32">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   id
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   userId
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   title
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   completed
                 </th>
               </tr>
@@ -54,19 +53,19 @@ export default function TodoTable() {
                       return (
                         <tr
                           key={data.id}
-                          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                          className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                         >
-                          <td class="px-6 py-4">{data.userId}</td>
-                          <td class="px-6 py-4">{data.id}</td>
+                          <td className="px-6 py-4">{data.userId}</td>
+                          <td className="px-6 py-4">{data.id}</td>
 
                           <th
                             scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                            className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
                           >
                             {data.title}
                           </th>
 
-                          <td class="px-6 py-4">
+                          <td className="px-6 py-4">
                             {data.completed ? (
                               <p className="p-2 text-white bg-green-800 w-28 rounded-md text-base text-center">
                                 Completed
@@ -88,86 +87,65 @@ export default function TodoTable() {
                 <Navigate to={"/NotFound"} />
               </>
             )}
-
-            {/* <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4">1</td>
-
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                >
-                  Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">Sliver</td>
-                <td class="px-6 py-4">Laptop</td>
-                <td class="px-6 py-4">$2999</td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4">1</td>
-
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                >
-                  Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">White</td>
-                <td class="px-6 py-4">Laptop PC</td>
-                <td class="px-6 py-4">$1999</td>
-              </tr>
-              <tr class="bg-white dark:bg-gray-800">
-                <td class="px-6 py-4">1</td>
-
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                >
-                  Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">Black</td>
-                <td class="px-6 py-4">Accessories</td>
-                <td class="px-6 py-4">$99</td>
-              </tr> */}
           </table>
-          <div class="flex sticky bottom-0 left-0 items-center justify-between border-t border-gray-200 bg-zinc-800 text-white px-4 py-3 sm:px-6">
-            <div class="flex flex-1 justify-between sm:hidden">
+          <div className="flex sticky bottom-0 left-0 items-center justify-between border-t border-gray-200 bg-zinc-800 text-white px-4 py-3 sm:px-6">
+            <div className="flex flex-1 justify-between sm:hidden">
               <a
                 href="#"
-                class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-white hover:bg-gray-950"
+                className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-white hover:bg-gray-950"
               >
                 Previous
               </a>
               <a
                 href="#"
-                class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-white hover:bg-gray-950"
+                className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-white hover:bg-gray-950"
               >
                 Next
               </a>
             </div>
-            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
               <div>
-                <p class="text-sm text-white">
+                <p className="text-sm text-white">
                   Showing
-                  <span class="font-medium">1</span>
+                  <span className="font-medium">1</span>
                   to
-                  <span class="font-medium">10</span>
+                  <span className="font-medium">10</span>
                   of
-                  <span class="font-medium">97</span>
+                  <span className="font-medium">97</span>
                   results
                 </p>
               </div>
               <div>
                 <nav
-                  class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                  className="isolate inline-flex -space-x-px rounded-md shadow-sm"
                   aria-label="Pagination"
                 >
-                  <a
-                    href="#"
-                    class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-200 ring-1 ring-inset ring-gray-300 hover:bg-gray-950 focus:z-20 focus:outline-offset-0"
+                  <NavLink
+                    to={`/TodoTable/${
+                      pageNumber.current !== 1
+                        ? useParams().todoId - 1
+                        : useParams().todoId
+                    }`}
+                    onClick={(e) => {
+                      // e.preventDefault();
+                      if (pageNumber.current !== 1) {
+                        pageNumber.current = +pageNumber.current - 1;
+                        isUserDatas.current =
+                          userDatas.current.length / 20 >=
+                          Number(pageNumber.current);
+                        setUserDataInpages(
+                          userDatas.current.slice(
+                            (+pageNumber.current - 1) * 20,
+                            +pageNumber.current * 20
+                          )
+                        );
+                      }
+                    }}
+                    className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-200 ring-1 ring-inset ring-gray-300 hover:bg-gray-950 focus:z-20 focus:outline-offset-0"
                   >
-                    <span class="sr-only">Previous</span>
+                    <span className="sr-only">Previous</span>
                     <svg
-                      class="h-5 w-5"
+                      className="h-5 w-5"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -178,33 +156,25 @@ export default function TodoTable() {
                         clip-rule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </NavLink>
 
-                  {/* <a
-                    href="#"
-                    aria-current="page"
-                    class="relative z-10 inline-flex items-center  px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
-                  >
-                    1
-                  </a> */}
-                  {Array.from({ length: 5 })
+                  {Array.from({ length: userDatas.current.length / 20 })
                     .fill(0)
                     .map((num, index) => {
                       return (
                         <NavLink
-                          to={`/TodoTable/${index + +pageNumber}`}
+                          to={`/TodoTable/${index + 1}`}
                           onClick={(e) => {
                             // e.preventDefault();
+                            pageNumber.current = index + 1;
                             isUserDatas.current =
-                              userDatas.current.length / 10 >= +pageNumber + 1;
-                            console.log(
-                              userDatas.current.length / 10,
-                              pageNumber
-                            );
+                              userDatas.current.length / 20 >=
+                              Number(pageNumber.current);
+
                             setUserDataInpages(
                               userDatas.current.slice(
-                                pageNumber * 10,
-                                (+pageNumber + 1) * 10
+                                index * 20,
+                                (index + 1) * 20
                               )
                             );
                           }}
@@ -216,17 +186,36 @@ export default function TodoTable() {
                             }`;
                           }}
                         >
-                          {index + +pageNumber}
+                          {index + 1}
                         </NavLink>
                       );
                     })}
-                  <a
-                    href="#"
-                    class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-950 focus:z-20 focus:outline-offset-0"
+                  <NavLink
+                    to={`/TodoTable/${
+                      pageNumber.current !== 10
+                        ? +useParams().todoId + 1
+                        : useParams().todoId
+                    }`}
+                    onClick={(e) => {
+                      // e.preventDefault();
+                      if (pageNumber.current !== 10) {
+                        pageNumber.current = +pageNumber.current + 1;
+                        isUserDatas.current =
+                          userDatas.current.length / 20 >=
+                          Number(pageNumber.current);
+                        setUserDataInpages(
+                          userDatas.current.slice(
+                            (+pageNumber.current - 1) * 20,
+                            +pageNumber.current * 20
+                          )
+                        );
+                      }
+                    }}
+                    className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-950 focus:z-20 focus:outline-offset-0"
                   >
-                    <span class="sr-only">Next</span>
+                    <span className="sr-only">Next</span>
                     <svg
-                      class="h-5 w-5"
+                      className="h-5 w-5"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -237,7 +226,7 @@ export default function TodoTable() {
                         clip-rule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </NavLink>
                 </nav>
               </div>
             </div>

@@ -16,6 +16,7 @@ import Panel from "./components/Panel/Panel";
 import PrivateRoute from "./components/PrivateRoute";
 import TimerRef from "./components/TimerRef/TimerRef";
 import TodoTable from "./components/TodoTable/TodoTable";
+import Accordion from "./components/Accordion/Accordion";
 
 const formInfo = { title: "Login" };
 
@@ -28,6 +29,7 @@ let routes = [
   { path: "/QuizApp", element: <QuizApp /> },
   { path: "/Ticket", element: <Ticket /> },
   { path: "/Weather", element: <Weather /> },
+  { path: "/Accordion", element: <Accordion /> },
   { path: "/ProductPage/:productId", element: <ProductPage /> }, // #
   { path: "/TodoTable/:todoId", element: <TodoTable /> },
   { path: "*", element: <NotFound /> },

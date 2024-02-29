@@ -44,6 +44,11 @@ export default function Home() {
             </Link>
           </li>
           <li className="text-lg text-white border border-lime-600 bg-lime-500/30 w-1/6 rounded-lg transition-all cursor-pointer hover:bg-lime-500/50">
+            <Link className="block p-4 rounded-lg w-full" to="/Accordion">
+              Accordion
+            </Link>
+          </li>
+          <li className="text-lg text-white border border-lime-600 bg-lime-500/30 w-1/6 rounded-lg transition-all cursor-pointer hover:bg-lime-500/50">
             <Link className="block p-4 rounded-lg w-full" to="/TodoTable/1">
               TodoTable
             </Link>
