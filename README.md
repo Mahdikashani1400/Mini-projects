@@ -1,8 +1,23 @@
-# React + Vite
+# React Mini-Projects
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the React Mini-Projects repository! 🚀
 
-Currently, two official plugins are available:
+This repository contains a collection of small-scale projects built using React. These mini-projects are designed to demonstrate various aspects of React development, including state management, component composition, routing, and more. Whether you're a beginner looking to practice React fundamentals or an experienced developer seeking inspiration for your next project, you'll find something interesting here.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project List
+
+- **Project 1**: TodoList
+- **Project 2**: LoginForm
+- **Project 3**: Timer
+- **Project 4**: QuizApp
+- **Project 5**: Ticket
+- **Project 6**: Weather
+- **Project 7**: Accordion
+- **Project 8**: TodoTable
+
+## Getting Started
+
+To get started with these mini-projects, simply clone the repository to your local machine:
+
+```bash
+git clone https://github.com/Mahdikashani1400/Mini-projects.git
